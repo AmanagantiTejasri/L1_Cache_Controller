@@ -94,7 +94,7 @@ LRU information is updated after every cache access to keep track of the recentl
   The cache uses a write allocate policy. During a write miss, the required block is first 
   loaded into the cache and then the data is written into that cache block.
 
-  * ### Refill Technioue
+* ### Refill Technique
      ### Critical Word First(CWF)   
 
    During cache refill, the requested word is loaded first from main memory, followed by the remaining words of the block.
