@@ -120,50 +120,50 @@ during refill and write-back operations.
 
 # Finite State Machine
 
-The cache controller is implemented using a 6 state FSM to handle different cache 
-operations. The FSM controls the flow of read/write requests,tag comaparasion,cache misses,refill, 
-write-back and response to the CPU.
+     The cache controller is implemented using a 6 state FSM to handle different cache 
+     operations. The FSM controls the flow of read/write requests,tag comaparasion,cache misses,refill, 
+     write-back and response to the CPU.
 
 * IDLE
 
-Controller remains in Idle state till it recieves request from CPU.
-When it recieves,the recieved address is stored to use throughout the operation and FSM moves to TAG_COMPARE(next state)
+     Controller remains in Idle state till it recieves request from CPU.
+     When it recieves,the recieved address is stored to use throughout the operation and FSM moves to TAG_COMPARE(next state)
 
 * TAG_COMPARE
   
-Controller compares the requested address tag with the stored tags of the selected set
-if tag matches,hit way is updated and fsm moves to RESPOND_CPU state
-if tag doesnt match,it chooses replacement way(victim block) using LRU policy and FSM moves to MISS state.
+     Controller compares the requested address tag with the stored tags of the selected set
+     if tag matches,hit way is updated and fsm moves to RESPOND_CPU state
+     if tag doesnt match,it chooses replacement way(victim block) using LRU policy and FSM moves to MISS state.
 
 * MISS
   
-Controller checks the dirty bit of victim block
-if block is dirty,fsm moves to WRITE_BACK state to store the modified block from cache into main memory
+     Controller checks the dirty bit of victim block
+     if block is dirty,fsm moves to WRITE_BACK state to store the modified block from cache into main memory
 
-if block is not dirty,fsm moves to REFILL state to load the new block into cache from main memory.
+     if block is not dirty,fsm moves to REFILL state to load the new block into cache from main memory.
 
 * WRITE_BACK
  
-The memory write signal is enabled,each word of dirty block is transferred to main memory using write_back counter
-after write-back counters are reset and fsm moves to REFILL state
+    The memory write signal is enabled,each word of dirty block is transferred to main memory using write_back counter
+    after write-back counters are reset and fsm moves to REFILL state
 
 * REFILL
   
-The controller loads the required block from main memory into the selected way.
+    The controller loads the required block from main memory into the selected way.
 
-Using the Critical Word First (CWF) technique, the requested word is loaded first and the 
-remaining words of the block are refilled using refill counters.
+    Using the Critical Word First (CWF) technique, the requested word is loaded first and the 
+    remaining words of the block are refilled using refill counters.
 
-After completing the refill, the tag and valid bit are updated in cache.The dirty bit is updated
-based on the CPU request type(read/write), and the FSM moves to the RESPOND_CPU state.
+    After completing the refill, the tag and valid bit are updated in cache.The dirty bit is updated
+    based on the CPU request type(read/write), and the FSM moves to the RESPOND_CPU state.
 
 * RESPOND_CPU
   
-Controller completes the CPU request and sends the ready signal to indicate that the 
-operation is finished.
+    Controller completes the CPU request and sends the ready signal to indicate that the 
+    operation is finished.
 
-For a read request, the required data is provided from the cache block to the CPU. For a 
-write request, the data is updated in the cache block and the dirty bit is set.
+    For a read request, the required data is provided from the cache block to the CPU. For a 
+    write request, the data is updated in the cache block and the dirty bit is set.
 
 
 # Test cases
