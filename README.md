@@ -8,7 +8,7 @@ processor, cache memory, and main memory.
 It handles CPU read/write requests, detects cache hits/misses and controls data transfer 
 between the cache and main memory.
 ## Project Details
-Implemented an L1 Cache Controller using Verilog HDL. The controller logic is designed as
+Implemented an L1 Cache Controller using Verilog HDL. The controller logic is designed using
 Finite State Machine (FSM) to handle CPU requests,cache hit/miss detection,cache refill, 
 write-back and responding to CPU operations.
 
@@ -42,7 +42,7 @@ The L1 Cache Controller design is divided into three main Verilog modules:
 Cache Controller, Main Memory, and Top Module.
 Each module performs a specific function and is connected together to implement the complete cache system.
 
-* ### Cache controller
+* ### Cache Controller
 
      The cache controller module contains the control logic of the L1 cache. It includes 
      cache parameter calculation, address breakdown into tag,index and offset fields and 
@@ -52,7 +52,7 @@ Each module performs a specific function and is connected together to implement 
      operations through FSM. It generates control signals for cache refill and write-back 
      operations and manages valid bits, dirty bits, and LRU information for cache block 
      replacement.
-* ### Main memory
+* ### Main Memory
 
      The main memory module represents the external memory connected to the L1 cache. 
      It stores data blocks and handles memory read and write operations based on the 
@@ -61,7 +61,7 @@ Each module performs a specific function and is connected together to implement 
      During a cache miss, it provides the required data block for cache refill, and during 
      write-back operations, it stores the modified cache block back into memory.
 
-* ### Top module
+* ### Top Module
 
     The top module integrates the cache controller and main memory modules to create the 
     complete L1 cache system. It connects the CPU interface signals,cache control signals, 
@@ -84,7 +84,7 @@ LRU information is updated after every cache access to keep track of the recentl
 
 * ### Write-back
   
-  The cache uses a write-back policy. During a write operation,data is written into the 
+  The cache uses a write-back policy. During a write operation,data is updated in 
   cache block by processor and the dirty bit is set to indicate that the block is modified.
 
   The modified block is written back to main memory only when it is replaced.
@@ -93,6 +93,11 @@ LRU information is updated after every cache access to keep track of the recentl
   
   The cache uses a write allocate policy. During a write miss, the required block is first 
   loaded into the cache and then the data is written into that cache block.
+
+  * ### Refill Technioue
+     ### Critical Word First(CWF)   
+
+   During cache refill, the requested word is loaded first from main memory, followed by the remaining words of the block.
 
 ## Architecture
 
@@ -120,20 +125,20 @@ during refill and write-back operations.
 
 # Finite State Machine
 
-The cache controller is implemented using a 6 state FSM to handle different cache 
-operations. The FSM controls the flow of read/write requests,tag comaparasion,cache misses,refill, 
+The cache controller is implemented using a 6-state FSM to handle different cache 
+operations. The FSM controls the flow of read/write requests,tag comaparison,cache misses,refill, 
 write-back and response to the CPU
 
 * IDLE
 
-     Controller remains in Idle state till it recieves request from CPU.
+     The controller remains in Idle state until it recieves request from CPU.
      When it recieves,the recieved address is stored to use throughout the operation and FSM moves to TAG_COMPARE(next state)
 
 * TAG_COMPARE
   
-     Controller compares the requested address tag with the stored tags of the selected set
-     if tag matches,hit way is updated and fsm moves to RESPOND_CPU state
-     if tag doesnt match,it chooses replacement way(victim block) using LRU policy and FSM moves to MISS state.
+     Controller compares the requested address tag with the stored tags of the selected set.
+     If tag matches,hit way is updated and fsm moves to RESPOND_CPU state.
+     If tag doesnt match,it chooses replacement way(victim block) using LRU policy and FSM moves to MISS state.
 
 * MISS
   
