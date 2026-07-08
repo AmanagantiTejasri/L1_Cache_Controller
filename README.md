@@ -16,7 +16,16 @@ information.It uses 2-way set associativity and Critical Word First (CWF) refill
 for efficient cache operation. The functionality is verified using Verilog testbenches 
 covering different cache scenarios.
 # Cache configuration
-<img width="605" height="232" alt="image" src="https://github.com/user-attachments/assets/5d375e57-f2cb-4cac-a230-6acf0276fe6a" />
+
+| Parameter | Value |
+|-----------|-------|
+| Cache Size | 4 KB |
+| Associativity | 2-way set associative |
+| Block Size | 64 Bytes |
+| Data Width | 32 bits |
+| Address Width | 32 bits |
+| Number of Sets | 32 |
+| Words per Block | 16 |
 
 ## Features
 
