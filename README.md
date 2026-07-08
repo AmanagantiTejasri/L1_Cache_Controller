@@ -74,13 +74,13 @@ When both ways in a set are occupied,the least recently used block is selected a
 LRU information is updated after every cache access to keep track of the recently used way.
 
 ## Write policies Used
-*Write-back
+* Write-back
 The cache uses a write-back policy. During a write operation,data is written into the 
 cache block by processor and the dirty bit is set to indicate that the block is modified.
 
 The modified block is written back to main memory only when it is replaced.
 
-*Write Allocate
+* Write Allocate
 The cache uses a write allocate policy. During a write miss, the required block is first 
 loaded into the cache and then the data is written into that cache block.
 
