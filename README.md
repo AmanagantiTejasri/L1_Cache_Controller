@@ -174,24 +174,41 @@ write-back and response to the CPU
 # Test cases
 L1 cache controller functionality is verified using a verilog testbench by applying different operations
 
-* ### Cold miss
+* ### Cold Read miss
   
-  Verifies the first access in empty cache where valid bit is 0,resulting cache miss.
-  Required block is loaded in cache and requested word is provided to CPU.
+   Verifies the first access in empty cache where valid bit is 0,resulting cache miss.
+   Required block is loaded in cache and requested word is provided to CPU.
+  
+* ### Cold Write miss
+  
+   A cold write miss occurs when the CPU writes to a memory block that is not present in the cache.
+   The block is first brought into the cache from main memory, and then the new data is written to it.
+
+* ### Read Hit
+  
+   A read hit occurs when the CPU requests data that is already present in the cache. The cache directly returns the requested data to the CPU without accessing     main memory.
   
 * ### Write hit
 
    Verifies write operation when required block is already present in cache.
    After write, dirty bit is set to 1.
 
+* ### 2-way filling
+  
+   Two different memory blocks mapping to the same cache set are accessed. The first block fills Way 0, while the second block fills Way 1,showing that both ways    of the set can store different blocks simultaneously.
+  
 * ### LRU Replacement
-
+  
    Verifies the selection of least recently used way when both ways are occupied.
+
+* ### CWF Refill
+  
+   The critical word requested by the CPU is fetched first, allowing the CPU to receive the required data before the complete block is loaded into the cache.
 
 * ### Write back
 
    Verifies replacement of block when dirty bit is 1.
-   The dirty block is written back to main memory and new required 
+   The dirty block is written back to main memory and new required block is loaded into the cache.
    block is loaded into the cache.
 
   
