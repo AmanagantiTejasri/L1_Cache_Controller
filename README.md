@@ -16,7 +16,7 @@ The design includes separate storage for cache data, tags, valid bits, dirty bit
 information.It uses 2-way set associativity and Critical Word First (CWF) refill technique 
 for efficient cache operation. The functionality is verified using Verilog testbenches 
 covering different cache scenarios.
-# Cache configuration
+# ➤ Cache configuration
 
 | Parameter | Value |
 |-----------|-------|
@@ -37,7 +37,7 @@ covering different cache scenarios.
 * Critical Word First (CWF) refill
 * 6-state FSM based cache controller
 
-# Module Description
+# ◆ Module Description
 The L1 Cache Controller design is divided into three main Verilog modules: 
 Cache Controller, Main Memory, and Top Module.
 Each module performs a specific function and is connected together to implement the complete cache system.
