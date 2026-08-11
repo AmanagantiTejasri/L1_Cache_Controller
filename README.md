@@ -171,17 +171,21 @@ write-back and response to the CPU
     write request, the data is updated in the cache block and the dirty bit is set.
 
 
-#Test Cases
+
+#  Test Cases
+
+The L1 cache controller is verified using a Verilog testbench with different operations.
 
 | Test Case | Description | Waveform |
 |---|---|---|
-| Cold Read Miss | Block is not in cache and is fetched from main memory. | [View](Simulation%20Waveforms/COLD%20READ%20MISS.png) |
-| Read Hit | Requested data is already in cache and is returned directly. | [View](Simulation%20Waveforms/Read%20HIT.png) |
-| Cold Write Miss | Block is fetched first, then new data is written to the cache. | [View](Simulation%20Waveforms/COLD%20WRITE%20MISS.png) |
-| 2-Way Filling | Two blocks mapping to the same set fill Way 0 and Way 1. | [View](Simulation%20Waveforms/2%20way%20filling.png) |
-| CWF Refill | Requested word is fetched first, followed by the remaining words. | [View](Simulation%20Waveforms/CWF%20Refill.png) |
-| LRU Replacement | Least recently used block is selected for replacement. | [View](Simulation%20Waveforms/LRU/) |
-| Write Back | Dirty block is written back to main memory before replacement. | [View](Simulation%20Waveforms/WRITE%20BACK/) |
+| **Cold Read Miss** | First access to an empty cache results in a miss. The required block is loaded into the cache and the requested word is provided to the CPU. | [View](Simulation%20Waveforms/COLD%20READ%20MISS.png) |
+| **Cold Write Miss** | The CPU writes to a block that is not present in the cache. The block is first loaded from main memory, and then the new data is written to the cache. | [View](Simulation%20Waveforms/COLD%20WRITE%20MISS.png) |
+| **Read Hit** | The requested data is already present in the cache, so it is directly returned to the CPU without accessing main memory. | [View](Simulation%20Waveforms/Read%20HIT.png) |
+| **Write Hit** | The CPU writes to a block already present in the cache. The data is updated and the dirty bit is set to 1. | [View](Simulation%20Waveforms/WRITE%20HIT.png) |
+| **2-Way Filling** | Two different blocks mapping to the same set fill Way 0 and Way 1. | [View](Simulation%20Waveforms/2%20way%20filling.png) |
+| **LRU Replacement** | When both ways are occupied, the least recently used way is selected for replacement. | [View](Simulation%20Waveforms/LRU/) |
+| **CWF Refill** | The critical word requested by the CPU is fetched first, allowing the CPU to receive the required data before the complete block is loaded. | [View](Simulation%20Waveforms/CWF%20Refill.png) |
+| **Write Back** | When a dirty block is replaced, its data is written back to main memory before the new block is loaded into the cache. | [View](Simulation%20Waveforms/WRITE%20BACK/) |
 
   
 
