@@ -101,27 +101,27 @@ LRU information is updated after every cache access to keep track of the recentl
 
  # 🔹Architecture
 
-  ### CPU Interface
+ * ### CPU Interface
 
-  The CPU communicates with the cache controller using address,read/write control 
-  signals. The controller sends the requested data and ready signal back to the CPU after 
-  processing the request.
+    The CPU communicates with the cache controller using address,read/write control 
+    signals. The controller sends the requested data and ready signal back to the CPU after 
+    processing the request.
 
-  ### Cache Storage
+ * ### Cache Storage
 
-  The cache storage consists of data memory, tag memory, valid bits, dirty bits, and LRU bits.
+    The cache storage consists of data memory, tag memory, valid bits, dirty bits, and LRU bits.
 
-  Data memory stores the cache blocks fetched from main memory. Tag memory stores the tag 
-  portion of the address to identify the memory block stored in the cache.
+    Data memory stores the cache blocks fetched from main memory. Tag memory stores the tag 
+    portion of the address to identify the memory block stored in the cache.
 
-  Valid bits indicate whether the cache block contains valid data. Dirty bits indicate 
-  whether the cache block has been modified after write operation. LRU bits store information about the recently used cache way and are used during block replacement.
+    Valid bits indicate whether the cache block contains valid data. Dirty bits indicate 
+    whether the cache block has been modified after write operation. LRU bits store information about the recently used cache way and are used during block replacement.
 
-  ### Main Memory Interface
+ * ### Main Memory Interface
 
-  The cache controller communicates with main memory using memory address, data and 
-  read/write control signals. Data blocks are transferred between cache and main memory 
-  during refill and write-back operations.
+    The cache controller communicates with main memory using memory address, data and 
+    read/write control signals. Data blocks are transferred between cache and main memory 
+    during refill and write-back operations.
 
 # 🔄 Finite State Machine
 
