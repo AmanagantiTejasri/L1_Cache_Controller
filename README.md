@@ -99,7 +99,7 @@ LRU information is updated after every cache access to keep track of the recentl
 
    During cache refill, the requested word is loaded first from main memory, followed by the remaining words of the block.
 
-## 🔹 Architecture
+# 🔹 Architecture
 
 ### CPU Interface
 
