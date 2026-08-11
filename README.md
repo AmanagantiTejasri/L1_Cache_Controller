@@ -1,5 +1,5 @@
 # L1_Cache_Controller
-## Overview
+## 📖 Overview
 Cache memory is a small and high-speed memory located between the processor and main memory. 
 It stores frequently accessed data and instructions to reduce the average memory access time.
 
@@ -28,7 +28,7 @@ covering different cache scenarios.
 | Number of Sets | 32 |
 | Words per Block | 16 |
 
-# Features
+# ✨ Features
 
 * 2-way set associative cache
 * Least Recently Used (LRU) replacement policy
@@ -67,7 +67,7 @@ Each module performs a specific function and is connected together to implement 
     complete L1 cache system. It connects the CPU interface signals,cache control signals, 
     and memory interface signals.
 
-# Design Details
+# 📌 Design Details
 ## Mapping Details
 
 The cache uses 2-way set associative mapping. Each cache set contains two ways.A 
@@ -99,7 +99,7 @@ LRU information is updated after every cache access to keep track of the recentl
 
    During cache refill, the requested word is loaded first from main memory, followed by the remaining words of the block.
 
-## Architecture
+## 🔹 Architecture
 
 ### CPU Interface
 
@@ -123,7 +123,7 @@ The cache controller communicates with main memory using memory address, data an
 read/write control signals. Data blocks are transferred between cache and main memory 
 during refill and write-back operations.
 
-# Finite State Machine
+# 🔄 Finite State Machine
 
 The cache controller is implemented using a 6-state FSM to handle different cache 
 operations. The FSM controls the flow of read/write requests,tag comaparison,cache misses,refill, 
@@ -171,8 +171,7 @@ write-back and response to the CPU
     write request, the data is updated in the cache block and the dirty bit is set.
 
 
-
-#  Test Cases
+# 🔍Test Cases
 
 The L1 cache controller is verified using a Verilog testbench with different operations.
 
