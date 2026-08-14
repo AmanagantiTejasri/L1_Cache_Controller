@@ -119,8 +119,8 @@ module cache_controller #(
                  if(valid_mem[req_index][0]&&(tag_mem[req_index][0] == req_tag))
                     begin 
                       hit_way <= 0;
-                      lru[req_index] <= 1'b1; 
-                      state <= RESPOND_CPU;                                            //LRU update
+                      lru[req_index] <= 1'b1;                                       //LRU update
+                      state <= RESPOND_CPU;                                            
                      end 
             
                  else if(valid_mem[req_index][1] &&(tag_mem[req_index][1] == req_tag)) 
@@ -153,7 +153,7 @@ module cache_controller #(
                   end
                else
                  begin
-                  current_word <= req_word_off; 
+                  current_word <= req_word_off;                            // CWF
                   refill_count <= 0; 
                 state <= REFILL;
                  end
