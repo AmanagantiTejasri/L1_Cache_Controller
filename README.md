@@ -7,6 +7,9 @@ Cache controller is the hardware unit responsible for managing communication bet
 processor, cache memory, and main memory.
 It handles CPU read/write requests, detects cache hits/misses and controls data transfer 
 between the cache and main memory.
+## ◆Block Diagram
+<img width="1536" height="1024" alt="block diagram" src="https://github.com/user-attachments/assets/ede113dc-5404-425b-98f7-9fa785c675ce" />
+
 ## Project Details
 Implemented an L1 Cache Controller using Verilog HDL. The controller logic is designed using
 Finite State Machine (FSM) to handle CPU requests,cache hit/miss detection,cache refill, 
