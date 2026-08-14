@@ -8,7 +8,8 @@ processor, cache memory, and main memory.
 It handles CPU read/write requests, detects cache hits/misses and controls data transfer 
 between the cache and main memory.
 ## ◆Block Diagram
-<img width="1536" height="1024" alt="block diagram" src="https://github.com/user-attachments/assets/ede113dc-5404-425b-98f7-9fa785c675ce" />
+   <img width="901" height="399" alt="image" src="https://github.com/user-attachments/assets/7f40c5a0-3281-4934-ae77-c77ae2e631b2" />
+
 
 ## Project Details
 Implemented an L1 Cache Controller using Verilog HDL. The controller logic is designed using
